@@ -62,12 +62,12 @@
         const data = JSON.parse(products);
         data.forEach((Element) => {
             const mainWrapper = document.createElement("div");
-            mainWrapper.classList.add(main-wrapper);
+            mainWrapper.classList.add("main-wrapper");
 
             const img = document.createElement('img');
             img.classList.add("product-image");
             img.alt = "product";
-            img.scr = Element.img;
+            img.src = Element.img;
             console.log(Element.img);
 
             const productInfo = document.createElement("div");
@@ -87,11 +87,10 @@
 
             productInfo.appendChild(h2);
             productInfo.appendChild(p);
-            productInfo.appendChild(description);
             productInfo.appendChild(span);
 
             
-        })
+        });
     </script>
 
 
