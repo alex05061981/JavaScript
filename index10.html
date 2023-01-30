@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainWrapper">
+        <div class="heading">
+            <h1>Fetured Items</h1>
+            <h3>Shop for items based on what we featured in this week</h3>
+        </div>
+        <div class="productContainer">
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+        </div>
+        <div class="productContainer">
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+            <div class="product-info">
+                <img src="" class="product-image" alt="product">
+                <h2></h2>
+                <p></p>
+                <span></span>
+            </div>
+        </div>
+
+    </div>
+    <script src="JSON.js"></script>
+    <script>
+        const data = JSON.parse(products);
+        data.forEach((Element) => {
+            const mainWrapper = document.createElement("div");
+            mainWrapper.classList.add(main-wrapper);
+
+            const img = document.createElement('img');
+            img.classList.add("product-image");
+            img.alt = "product";
+            img.scr = Element.img;
+            console.log(Element.img);
+
+            const productInfo = document.createElement("div");
+            productInfo.classList.add("product-info");
+
+            const h2 = document.createElement("h2");
+            h2.textContent = Element.name;
+
+            const p = document.createElement("p");
+            p.textContent = Element.description;
+
+            const span = document.createElement("span");
+            span.textContent = Element.span;
+
+            mainWrapper.appendChild(img);
+            mainWrapper.appendChild(productInfo);
+
+            productInfo.appendChild(h2);
+            productInfo.appendChild(p);
+            productInfo.appendChild(description);
+            productInfo.appendChild(span);
+
+            
+        })
+    </script>
+
+
+
+</body>
+
+</html>
