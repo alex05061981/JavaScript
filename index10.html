@@ -17,19 +17,19 @@
         </div>
         <div class="productContainer">
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
             </div>
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
             </div>
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
@@ -37,19 +37,19 @@
         </div>
         <div class="productContainer">
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
             </div>
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
             </div>
             <div class="product-info">
-                <img src="" class="product-image" alt="product">
+                <img src="" class="product-image">
                 <h2></h2>
                 <p></p>
                 <span></span>
@@ -61,33 +61,35 @@
     <script>
         const data = JSON.parse(products);
         data.forEach((Element) => {
-            const mainWrapper = document.createElement("div");
-            mainWrapper.classList.add("main-wrapper");
-
-            const img = document.createElement('img');
-            img.classList.add("product-image");
-            img.alt = "product";
-            img.src = Element.img;
+            const mainWrapperElement = document.createElement("div");
+            mainWrapperElement.classList.add("main-wrapper");
+          
+            const productContainerElement = document.querySelector(".productContainer");
+           
+            const productInfoElement = document.createElement("div");
+            productInfoElement.classList.add("product-info");
+            const imgElement = document.createElement('img');
+            imgElement.classList.add("product-image");
+            imgElement.src = Element.img;
             console.log(Element.img);
 
-            const productInfo = document.createElement("div");
-            productInfo.classList.add("product-info");
+            const h2Element = document.createElement("h2");
+            h2Element.textContent = Element.name;
 
-            const h2 = document.createElement("h2");
-            h2.textContent = Element.name;
+            const pElement = document.createElement("p");
+            pElement.textContent = Element.description;
 
-            const p = document.createElement("p");
-            p.textContent = Element.description;
+            const spanElement = document.createElement("span");
+            spanElement.textContent = Element.price;
 
-            const span = document.createElement("span");
-            span.textContent = Element.span;
+            productContainerElement.appendChild(productInfoElement);
+            productInfoElement.appendChild(imgElement);
+        
+            
 
-            mainWrapper.appendChild(img);
-            mainWrapper.appendChild(productInfo);
-
-            productInfo.appendChild(h2);
-            productInfo.appendChild(p);
-            productInfo.appendChild(span);
+            productInfoElement.appendChild(h2Element);
+            productInfoElement.appendChild(pElement);
+            productInfoElement.appendChild(spanElement);
 
             
         });
