@@ -10,92 +10,53 @@
 </head>
 
 <body>
-    <div class="mainWrapper">
-        <div class="heading">
-            <h1>Fetured Items</h1>
-            <h3>Shop for items based on what we featured in this week</h3>
-        </div>
-        <div class="productContainer">
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-        </div>
-        <div class="productContainer">
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-            <div class="product-info">
-                <img src="" class="product-image">
-                <h2></h2>
-                <p></p>
-                <span></span>
-            </div>
-        </div>
 
+    <div class="heading">
+        <h1>Fetured Items</h1>
+        <h3>Shop for items based on what we featured in this week</h3>
     </div>
+
+    <div class="productContainer"></div>
+    <div class="product-info"></div>
+    
+
     <script src="JSON.js"></script>
     <script>
         const data = JSON.parse(products);
         data.forEach((Element) => {
-            const mainWrapperElement = document.createElement("div");
-            mainWrapperElement.classList.add("main-wrapper");
-          
-            const productContainerElement = document.querySelector(".productContainer");
-            productContainerElement.classList.add("productContainer");
-            const productInfoElement = document.createElement("div");
-            productInfoElement.classList.add("product-info");
-            const imgElement = document.createElement('img');
-            imgElement.classList.add("product-image");
-            imgElement.src = Element.img;
+            
+
+            const productContainerEl = document.querySelector(".productContainer");
+   
+            const productInfoEl = document.createElement("div");
+            productInfoEl.classList.add("product-info");
+            const imgEl = document.createElement('img');
+            imgEl.classList.add("product-image");
+            imgEl.alt = "product";
+            imgEl.src = Element.img;
             console.log(Element.img);
 
-            const h2Element = document.createElement("h2");
-            h2Element.textContent = Element.name;
+            const h2El = document.createElement("h2");
+            h2El.textContent = Element.name;
 
-            const pElement = document.createElement("p");
-            pElement.textContent = Element.description;
+            const pEl = document.createElement("p");
+            pEl.textContent = Element.description;
 
-            const spanElement = document.createElement("span");
-            spanElement.textContent = Element.price;
-
-            productContainerElement.appendChild(productInfoElement);
-            productInfoElement.appendChild(imgElement);
-           
-            
-
-            productInfoElement.appendChild(h2Element);
-            productInfoElement.appendChild(pElement);
-            productInfoElement.appendChild(spanElement);
+            const spanEl = document.createElement("span");
+            spanEl.textContent = Element.price;
 
             
+            productContainerEl.appendChild(productInfoEl); 
+            productInfoEl.appendChild(imgEl);
+            
+
+            productInfoEl.appendChild(h2El);
+            productInfoEl.appendChild(pEl);
+            productInfoEl.appendChild(spanEl);
+
+
         });
-    </script>
-
-
+    </script> -->
 
 </body>
 
