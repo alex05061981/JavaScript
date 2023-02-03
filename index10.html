@@ -7,56 +7,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6531ab93d4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <div class="heading">
-        <h1>Fetured Items</h1>
-        <h3>Shop for items based on what we featured in this week</h3>
+    <h3 class="items-heading">Fetured Items</h3>
+    <p class="items-description">Shop for items based on what we featured in this week</p>
+    <div class="product-box"></div>
+    <div class="cart">
+        <div class="product-cart">
+        </div>
     </div>
 
-    <div class="productContainer"></div>
-    <div class="product-info"></div>
-    
 
-    <script src="JSON.js"></script>
+
+    <script src="json.js"></script>
+
     <script>
-        const data = JSON.parse(products);
-        data.forEach((Element) => {
-            
-
-            const productContainerEl = document.querySelector(".productContainer");
-   
-            const productInfoEl = document.createElement("div");
-            productInfoEl.classList.add("product-info");
-            const imgEl = document.createElement('img');
-            imgEl.classList.add("product-image");
-            imgEl.alt = "product";
-            imgEl.src = Element.img;
-            console.log(Element.img);
-
-            const h2El = document.createElement("h2");
-            h2El.textContent = Element.name;
-
-            const pEl = document.createElement("p");
-            pEl.textContent = Element.description;
-
-            const spanEl = document.createElement("span");
-            spanEl.textContent = Element.price;
-
-            
-            productContainerEl.appendChild(productInfoEl); 
-            productInfoEl.appendChild(imgEl);
-            
-
-            productInfoEl.appendChild(h2El);
-            productInfoEl.appendChild(pEl);
-            productInfoEl.appendChild(spanEl);
 
 
+        const productBox = document.querySelector('.product-box');
+
+        const data = JSON.parse(dataProducts);
+        console.log(data);
+        data.forEach(element => {
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+
+            const imgDiv = document.createElement('div');
+            imgDiv.classList.add('img_div');
+
+            const productImg = document.createElement('img');
+            productImg.classList.add('product_img');
+            productImg.setAttribute('alt', element.id);
+            productImg.src = element.img;
+
+            const productContent = document.createElement('div');
+            productContent.classList.add('product_content');
+
+            const productName = document.createElement('h3');
+            productName.classList.add('product_name');
+            productName.textContent = element.name;
+
+            const productText = document.createElement('p');
+            productText.classList.add('product_text');
+            productText.textContent = element.description;
+
+            const productPrice = document.createElement('p');
+            productPrice.classList.add('product_price');
+            productPrice.textContent = element.price;
+
+            const buttonCart = document.createElement('div');
+            buttonCart.classList.add('button-cart');
+            const buttonCartAdd = document.createElement('button');
+            buttonCartAdd.classList.add('add_to_cart');
+            buttonCartAdd.textContent = 'Add to Cart';
+
+            const cartTitle = document.createElement('h3');
+            cartTitle.classList.add('cart_title');
+            cartTitle.textContent = 'Cart items';
+
+            const product = document.querySelector('.product-cart');
+
+            imgDiv.appendChild(productImg);
+            productContent.appendChild(productName);
+            productContent.appendChild(productText);
+            productContent.appendChild(productPrice);
+            buttonCart.appendChild(buttonCartAdd);
+            imgDiv.appendChild(buttonCart);
+            productEl.appendChild(imgDiv);
+            productEl.appendChild(productContent);
+            productBox.appendChild(productEl);
+
+            buttonCartAdd.addEventListener('click', () => {
+
+                if (product.querySelector('.cart_title') == null) {
+                    document.querySelector('.product-cart').append(cartTitle);
+                }
+                const mainWrapper = document.createElement('div');
+                mainWrapper.classList.add('main-wrapper');
+
+                const img = document.createElement('img');
+                img.classList.add('product-image');
+                img.alt = 'product';
+                img.src = element.img;
+                console.log('element.img');
+
+                const buttonBox = document.createElement('div');
+                buttonBox.classList.add('button-box');
+                const buttonClose = document.createElement('button');
+                buttonClose.classList.add('index_button');
+                buttonClose.textContent = 'X';
+
+                const productInfo = document.createElement('div');
+                productInfo.classList.add('product-info');
+
+                const h2 = document.createElement('h2');
+                h2.textContent = element.name;
+
+                mainWrapper.appendChild(img);
+                mainWrapper.appendChild(productInfo);
+                mainWrapper.appendChild(buttonBox);
+
+                productInfo.appendChild(h2);
+                buttonBox.appendChild(buttonClose);
+
+                const fieldPValues = ["Price:", "Color:", "Size:", "Quantity:"];
+                const dataArray = Object.values(element);
+                for (let i = 0; i < fieldPValues.length; i++) {
+                    const field = document.createElement('div');
+                    field.classList.add('field');
+
+                    const fieldP = document.createElement('p');
+                    fieldP.textContent = fieldPValues[i];
+                    const fieldSpan = document.createElement('span');
+                    fieldSpan.textContent = dataArray[i];
+                    if (i === 3) fieldSpan.classList.add('quantity-count');
+                    if (i === 0) fieldSpan.classList.add('price-color')
+                    productInfo.appendChild(field);
+                    field.appendChild(fieldP);
+                    field.appendChild(fieldSpan);
+                }
+
+
+                product.append(mainWrapper);
+
+                buttonClose.addEventListener('click', function (e) {
+                    e.target.parentNode.parentNode.remove();
+                    if (product.querySelector('.main-wrapper') == null) {
+                        cartTitle.remove();
+                    }
+                });
+            });
         });
-    </script> -->
+
+
+    </script>
 
 </body>
 
